@@ -2,10 +2,11 @@
 Golang Restful CRUD & Authentication API using Gin Framework, Gorm, and MySQL.
 
 This boilerplate has been equipped with :
-- Validation
+- Validations
 - Pagination
 - JWT Authentication
 - Documentation Swagger
+- Migrations
 - Handlers CORS
 
 ### Structure
