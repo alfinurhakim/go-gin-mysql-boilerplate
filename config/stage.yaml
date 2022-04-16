@@ -1,0 +1,7 @@
+server:
+  port: 8000
+
+production: false
+
+jwt:
+  secret: 12345678

@@ -1,0 +1,360 @@
+{
+  "basePath": "/api/v1",
+  "host": "localhost:8000",
+  "info": {
+    "contact": {
+      "email": "alfinurhakim18@gmail.com",
+      "name": "Alfi Nur Hakim (Software Engineer)"
+    },
+    "description": "This is a complete documentation of the  REST API CRUD & Authentication",
+    "termsOfService": "http://swagger.io/terms/",
+    "title": "Documentation REST API CRUD & Authentication",
+    "version": "1.0"
+  },
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Register a new user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "properties": {
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "user_name": {
+                "type": "string",
+                "required": true
+              },
+              "password": {
+                "type": "string",
+                "required": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login user to get token authorization",
+        "description": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "properties": {
+              "user_name": {
+                "type": "string",
+                "required": true
+              },
+              "password": {
+                "type": "string",
+                "required": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Logout user use bearer token for delete session",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer {token}",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get user profile information login",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer {token}",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users (Authorized)"
+        ],
+        "summary": "Get all users information (for example)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "an authorization header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "required": false,
+            "description": "Set page for pagination data (default 1)"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "integer",
+            "required": false,
+            "description": "Set limit data for pagination data (default 10)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      }
+    },
+    "/books": {
+      "get": {
+        "tags": [
+          "Books (Authorized)"
+        ],
+        "summary": "Get all books information",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "an authorization header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "required": false,
+            "description": "Set page for pagination data (default 1)"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "integer",
+            "required": false,
+            "description": "Set limit data for pagination data (default 10)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books (Authorized)"
+        ],
+        "summary": "Create a new book",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "an authorization header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "properties": {
+              "book_number": {
+                "type": "string",
+                "required": true
+              },
+              "book_title": {
+                "type": "string",
+                "required": true
+              },
+              "author": {
+                "type": "string",
+                "required": true
+              },
+              "publication_year": {
+                "type": "number",
+                "required": true
+              },
+              "publisher": {
+                "type": "string",
+                "required": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "tags": [
+          "Books (Authorized)"
+        ],
+        "summary": "Get a book information",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "an authorization header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "declare id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books (Authorized)"
+        ],
+        "summary": "Update a book information",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "an authorization header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "declare id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "properties": {
+              "book_number": {
+                "type": "string",
+                "required": true
+              },
+              "book_title": {
+                "type": "string",
+                "required": true
+              },
+              "author": {
+                "type": "string",
+                "required": true
+              },
+              "publication_year": {
+                "type": "number",
+                "required": true
+              },
+              "publisher": {
+                "type": "string",
+                "required": true
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books (Authorized)"
+        ],
+        "summary": "Delete a book information",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "an authorization header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "declare id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successfull response"
+          }
+        }
+      }
+    }
+  },
+  "swagger": "2.0"
+}
